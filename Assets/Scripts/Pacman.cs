@@ -1,10 +1,6 @@
 using UnityEngine;
 
-public class Pacman : MonoBehavior {
-    private Vecotr2 pos;
-    private void Move(Vector2 mv){
-        pos += mv;
-    }
+public class Pacman : Entity {
     private void Update(){
         Movement();
     }
