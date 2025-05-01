@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Level : MonoBehaviour
@@ -19,7 +17,7 @@ public class Level : MonoBehaviour
 
 
     char[][] pacmanMaze = new char[][]
-{
+  {
     new char[] {'W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W'},
     new char[] {'W','.','.','.','.','.','.','W','W','.','.','.','.','.','.','W','W','.','.','.','.','W','W'},
     new char[] {'W','.','W','W','W','W','.','W','W','.','W','W','W','W','.','W','W','.','W','W','W','W','W'},
@@ -40,12 +38,13 @@ public class Level : MonoBehaviour
     new char[] {'W','.','W','W','W','W','.','W','W','.','W','W','W','W','.','W','W','.','W','W','W','W','W'},
     new char[] {'W','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','W'},
     new char[] {'W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W'}
-};
+  };
 
-    private void BuildLevel(char[][] level){
+    private void BuildLevel(char[][] level)
+    {
         Debug.Log("Building level");
-        float rowNum = -((pacmanMaze.Length / 2)+2);
-        float colNum = -((pacmanMaze[0].Length/2)+2);
+        float rowNum = -((pacmanMaze.Length / 2) + 2);
+        float colNum = -((pacmanMaze[0].Length / 2) + 2);
         float xOffset = rowNum;
         foreach (var i in level)
         {
@@ -53,7 +52,7 @@ public class Level : MonoBehaviour
             foreach (var j in i)
             {
                 rowNum++;
-                Vector2 pos = new Vector2(rowNum, colNum);
+                Vector3 pos = new Vector3(rowNum, colNum, 0f);
                 switch (j)
                 {
                     case 'W':
@@ -99,7 +98,8 @@ public class Level : MonoBehaviour
 
     }
 
-    private void PlaceGhost(Vector2 pos, char ghost){
+    private void PlaceGhost(Vector3 pos, char ghost)
+    {
         switch (ghost)
         {
             case 'R':
@@ -118,21 +118,26 @@ public class Level : MonoBehaviour
 
     }
 
-    private void PlaceWall(Vector2 pos){
+    private void PlaceWall(Vector3 pos)
+    {
         Instantiate(Wall, pos, Quaternion.identity);
     }
 
-    private void PlacePellet(Vector2 pos){
+    private void PlacePellet(Vector3 pos)
+    {
         Instantiate(Pellet, pos, Quaternion.identity);
     }
 
-    private void PlacePowerPellet(Vector2 pos){
+    private void PlacePowerPellet(Vector3 pos)
+    {
         Instantiate(PowerPellet, pos, Quaternion.identity);
     }
-    private void PlacePacMan(Vector2 pos){
+    private void PlacePacMan(Vector3 pos)
+    {
         Instantiate(PacMan, pos, Quaternion.identity);
     }
-    private void PlaceFood(Vector2 pos, char food){
+    private void PlaceFood(Vector3 pos, char food)
+    {
         switch (food)
         {
             case 'C':
@@ -150,7 +155,8 @@ public class Level : MonoBehaviour
         }
     }
 
-    private void Start(){
+    private void Start()
+    {
         BuildLevel(pacmanMaze);
     }
 }
