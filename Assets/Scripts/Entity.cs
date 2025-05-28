@@ -6,8 +6,8 @@ public class Entity : MonoBehaviour
     protected Vector2 pos;
 
     // Move entity by a vector
-    protected void Move(Vector2 mv)
-    {
-        pos += mv;
-    }
+    // protected void Move(Vector2 mv)
+    // {
+    //     pos += mv;
+    // }
 }
